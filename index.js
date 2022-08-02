@@ -18,10 +18,11 @@ app.use(bodyParser.json())
 
 app.get('/', function (req, res) {
     res.render('index' ,{
-        settings: settingsBill.getSettings(),
+        setting: settingsBill.getSettings(),
         totals: settingsBill.totals()
+       
     });
-     
+    
 });
 
 app.post('/settings' , function(req, res){
