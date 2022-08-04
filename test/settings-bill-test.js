@@ -70,8 +70,8 @@ describe('settings-bill', function(){
     it('should know when warning level reached', function(){
         const settingsBill = SettingsBill();
         settingsBill.setSettings({
-            smsCost: 5.00,
-            callCost: 5.00,
+            smsCost: 2.50,
+            callCost: 2.50,
             warningLevel: 5,
             criticalLevel: 10
         });
