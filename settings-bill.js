@@ -34,10 +34,14 @@ module.exports = function SettingsBill() {
             cost = callCost;
         }
 
+        if(hasReachedCriticalLevel()){
+            return
+        }
         actionList.push({
             type: action,
             cost,
-            timestamp: new Date()
+            date: new Date(),
+            timestamp:"",
         });
     }
 
@@ -103,14 +107,23 @@ module.exports = function SettingsBill() {
         const reachedWarningLevel = total >= warningLevel 
             && total < criticalLevel;
 
-        return reachedWarningLevel;
+        return reachedWarningLevel; 
     }
 
     function hasReachedCriticalLevel(){
         const total = grandTotal();
         return total >= criticalLevel;
     }
-
+    function grandTotalLevel(){
+        const total = grandTotal();
+        if(total >= warningLevel  && total < criticalLevel ){
+        return "warning";
+        }
+        else if(total >= criticalLevel){
+            return "danger"
+        }
+    }
+   
     return {
         setSettings,
         getSettings,
@@ -119,6 +132,8 @@ module.exports = function SettingsBill() {
         actionsFor,
         totals,
         hasReachedWarningLevel,
-        hasReachedCriticalLevel
+        hasReachedCriticalLevel,
+        grandTotalLevel
+        
     }
 }
