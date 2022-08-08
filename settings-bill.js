@@ -37,6 +37,9 @@ module.exports = function SettingsBill() {
         if(hasReachedCriticalLevel()){
             return
         }
+        if(action === 'sms' || action === 'call' ){
+            return
+        }
         actionList.push({
             type: action,
             cost,
@@ -77,9 +80,9 @@ module.exports = function SettingsBill() {
                 // if it is add the total to the list
                 total += action.cost;
             }
+            
         }
         return total;
-
         // the short way using reduce and arrow functions
 
         // return actionList.reduce((total, action) => { 
