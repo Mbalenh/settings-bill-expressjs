@@ -37,7 +37,7 @@ module.exports = function SettingsBill() {
         if(hasReachedCriticalLevel()){
             return
         }
-        if(action != 'sms' || action != 'call' ){
+         if(action !== 'sms' && action !== 'call'){
             return
         }
         actionList.push({
